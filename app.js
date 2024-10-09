@@ -1,11 +1,9 @@
-document.getElementById('entrar').addEventListener('click', function() {
-    alert('¡Bienvenido a Cumbre!');
-});
-document.getElementById('contactForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    alert('¡Mensaje enviado!');
-});
 // Mostrar y ocultar secciones
+document.getElementById('entrar').addEventListener('click', function() {
+    document.querySelector('.presentation').style.display = 'none';
+    document.getElementById('gestionClientes').style.display = 'block';
+});
+
 document.getElementById('botonSemanales').addEventListener('click', function() {
     mostrarSeccion('semanales');
 });
@@ -23,7 +21,7 @@ function mostrarSeccion(seccionId) {
     document.getElementById(seccionId).style.display = 'block';
 }
 
-// Guardar pedidos
+// Función para guardar pedidos
 document.getElementById('guardarPedido').addEventListener('click', function() {
     var pedidoTexto = document.getElementById('pedidoTexto').value;
     if (pedidoTexto) {
@@ -31,7 +29,7 @@ document.getElementById('guardarPedido').addEventListener('click', function() {
         var nuevoPedido = document.createElement('div');
         nuevoPedido.textContent = pedidoTexto;
         listaPedidos.appendChild(nuevoPedido);
+
         document.getElementById('pedidoTexto').value = '';
     }
 });
-
