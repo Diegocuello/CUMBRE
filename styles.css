@@ -64,3 +64,12 @@ button:hover {
 .contact-form button:hover {
     background-color: #006400;
 }
+.contact-form input,
+.contact-form textarea {
+    width: 50%; /* Cambiado de 100% a 50% para hacerlos más estrechos */
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Asegura que el padding se incluya dentro del ancho */
+}
