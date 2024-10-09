@@ -5,43 +5,20 @@ body {
     color: #333;
 }
 
-.container {
+.container, .presentation {
     padding: 20px;
 }
 
 h1 {
-    color: darkgreen;
-    font-size: 48px;
-    margin-bottom: 10px;
-}
-
-img {
-    width: 200px;
-    margin-bottom: 10px;
-}
-
-.tagline {
-    font-size: 18px;
-    color: green;
+    color: #007bff;
+    font-size: 32px;
     margin-bottom: 20px;
-    font-style: italic;
-}
-
-.home-link {
-    display: block;
-    font-size: 16px;
-    color: green;
-    text-decoration: none;
-    margin-bottom: 20px;
-}
-
-.icon-home {
-    /* Aquí añadirías tu icono de casa */
 }
 
 button {
     padding: 10px 20px;
-    background-color: darkgreen;
+    margin: 10px;
+    background-color: green;
     color: white;
     border: none;
     border-radius: 5px;
@@ -49,65 +26,11 @@ button {
 }
 
 button:hover {
-    background-color: #006400;
-}
-.extra-content {
-    margin-top: 20px;
-    font-size: 16px;
-    color: #333;
-}
-
-.contact-form {
-    margin-top: 20px;
-    text-align: left;
-    display: inline-block;
-    max-width: 400px;
-    width: 100%;
-}
-
-.contact-form h2 {
-    color: darkgreen;
-}
-
-.contact-form label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.contact-form input,
-.contact-form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.contact-form button {
-    padding: 10px 20px;
     background-color: darkgreen;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
 }
 
-.contact-form button:hover {
-    background-color: #006400;
-}
-.extra-content {
+.extra-content, .contact-form {
     margin-top: 20px;
-    font-size: 16px;
-    color: #333;
-}
-
-.contact-form {
-    margin-top: 20px;
-    text-align: left;
-    display: inline-block;
-    max-width: 400px;
-    width: 100%;
 }
 
 .contact-form h2 {
