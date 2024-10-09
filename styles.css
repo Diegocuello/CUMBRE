@@ -29,30 +29,30 @@ button:hover {
     background-color: darkgreen;
 }
 
-.extra-content, .contact-form {
+.extra-content, .contact-form, .add-client {
     margin-top: 20px;
 }
 
-.contact-form h2 {
+.contact-form h2, .add-client h2 {
     color: darkgreen;
 }
 
-.contact-form label {
+.contact-form label, .add-client label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
 }
 
-.contact-form input,
-.contact-form textarea {
-    width: 100%;
+.contact-form input, .contact-form textarea, .add-client input, .add-client select {
+    width: 50%; /* Ajustado a 50% para hacer más estrechas las casillas */
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    box-sizing: border-box;
 }
 
-.contact-form button {
+.contact-form button, .add-client button {
     padding: 10px 20px;
     background-color: darkgreen;
     color: white;
@@ -61,15 +61,14 @@ button:hover {
     cursor: pointer;
 }
 
-.contact-form button:hover {
+.contact-form button:hover, .add-client button:hover {
     background-color: #006400;
 }
-.contact-form input,
-.contact-form textarea {
-    width: 50%; /* Cambiado de 100% a 50% para hacerlos más estrechos */
-    padding: 10px;
+
+.semanales, .quincenales {
+    margin-top: 20px;
+}
+
+.semanales div, .quincenales div {
     margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box; /* Asegura que el padding se incluya dentro del ancho */
 }
