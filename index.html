@@ -31,9 +31,29 @@
                 <input type="text" id="nombre" name="nombre" required>
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
-                <label for="mensaje">Mensaje:</label>
-                <textarea id="mensaje" name="mensaje" required></textarea>
                 <button type="submit">Enviar</button>
+            </form>
+        </div>
+
+        <div class="add-client">
+            <h2>Agregar Cliente</h2>
+            <form id="addClientForm">
+                <label for="clientName">Nombre del Cliente:</label>
+                <input type="text" id="clientName" name="clientName" required>
+                <label for="clientDay">Día de la Semana:</label>
+                <select id="clientDay" name="clientDay">
+                    <option value="lunes">Lunes</option>
+                    <option value="martes">Martes</option>
+                    <option value="miércoles">Miércoles</option>
+                    <option value="jueves">Jueves</option>
+                    <option value="viernes">Viernes</option>
+                </select>
+                <label for="clientType">Tipo de Cliente:</label>
+                <select id="clientType" name="clientType">
+                    <option value="semanal">Semanal</option>
+                    <option value="quincenal">Quincenal</option>
+                </select>
+                <button type="submit">Agregar Cliente</button>
             </form>
         </div>
     </div>
