@@ -29,21 +29,21 @@ button:hover {
     background-color: darkgreen;
 }
 
-.extra-content, .contact-form, .add-client {
+.extra-content, .contact-form {
     margin-top: 20px;
 }
 
-.contact-form h2, .add-client h2 {
+.contact-form h2 {
     color: darkgreen;
 }
 
-.contact-form label, .add-client label {
+.contact-form label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
 }
 
-.contact-form input, .contact-form textarea, .add-client input, .add-client select {
+.contact-form input {
     width: 50%; /* Ajustado a 50% para hacer más estrechas las casillas */
     padding: 10px;
     margin-bottom: 10px;
@@ -52,7 +52,7 @@ button:hover {
     box-sizing: border-box;
 }
 
-.contact-form button, .add-client button {
+.contact-form button {
     padding: 10px 20px;
     background-color: darkgreen;
     color: white;
@@ -61,14 +61,49 @@ button:hover {
     cursor: pointer;
 }
 
-.contact-form button:hover, .add-client button:hover {
+.contact-form button:hover {
     background-color: #006400;
 }
 
-.semanales, .quincenales {
+.add-client {
     margin-top: 20px;
+    text-align: left;
 }
 
-.semanales div, .quincenales div {
+.add-client label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.add-client input, .add-client select {
+    width: 100%;
+    padding: 10px;
     margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.add-client button {
+    padding: 10px 20px;
+    background-color: darkgreen;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-client button:hover {
+    background-color: #006400;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    margin-top: 10px;
+}
+
+#listaPedidos, #listaClientesSemanales, #listaClientesQuincenales {
+    margin-top: 20px;
+    text-align: left;
 }
