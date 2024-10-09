@@ -5,13 +5,43 @@ body {
     color: #333;
 }
 
+.container {
+    padding: 20px;
+}
+
 h1 {
     color: #007bff;
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+img {
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+.tagline {
+    font-size: 18px;
+    color: green;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.home-link {
+    display: block;
+    font-size: 16px;
+    color: green;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+.icon-home {
+    /* Aquí añadirías tu icono de casa */
 }
 
 button {
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: green;
     color: white;
     border: none;
     border-radius: 5px;
@@ -19,5 +49,5 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: darkgreen;
 }
