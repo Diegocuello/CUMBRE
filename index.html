@@ -21,43 +21,6 @@
         <button id="botonQuincenales">Clientes Quincenales</button>
         <button id="botonPedidos">Registrar Pedidos</button>
 
-        <div class="extra-content">
-            <p>Más contenido importante que quieres mostrar debajo del botón.</p>
-        </div>
-        <div class="contact-form">
-            <h2>Contacto</h2>
-            <form id="contactForm">
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                <button type="submit">Enviar</button>
-            </form>
-        </div>
-
-        <!-- Sección para agregar clientes -->
-        <div class="add-client">
-            <h2>Agregar Cliente</h2>
-            <form id="addClientForm">
-                <label for="clientName">Nombre del Cliente:</label>
-                <input type="text" id="clientName" name="clientName" required>
-                <label for="clientDay">Día de la Semana:</label>
-                <select id="clientDay" name="clientDay">
-                    <option value="lunes">Lunes</option>
-                    <option value="martes">Martes</option>
-                    <option value="miércoles">Miércoles</option>
-                    <option value="jueves">Jueves</option>
-                    <option value="viernes">Viernes</option>
-                </select>
-                <label for="clientType">Tipo de Cliente:</label>
-                <select id="clientType" name="clientType">
-                    <option value="semanal">Semanal</option>
-                    <option value="quincenal">Quincenal</option>
-                </select>
-                <button type="submit">Agregar Cliente</button>
-            </form>
-        </div>
-
         <!-- Sección de Clientes Semanales -->
         <div class="semanales" id="semanales" style="display: none;">
             <h2>Clientes Semanales</h2>
@@ -69,8 +32,18 @@
             <h2>Clientes Quincenales</h2>
             <div id="listaClientesQuincenales"></div>
         </div>
-    </div>
 
-    <script src="app.js"></script>
-</body>
-</html>
+        <!-- Registro de Pedidos -->
+        <div class="pedidos" id="pedidos" style="display: none;">
+            <h2>Registrar Pedidos</h2>
+            <textarea id="pedidoTexto" placeholder="Escribe el pedido aquí..."></textarea>
+            <button id="guardarPedido">Guardar Pedido</button>
+            <div id="listaPedidos"></div>
+        </div>
+
+        <!-- Formulario para Agregar Clientes -->
+        <div class="add-client">
+            <h2>Agregar Cliente</h2>
+            <form id="addClientForm">
+                <label for="clientName">Nombre del Cliente:</label>
+                <input type="text
