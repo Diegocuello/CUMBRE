@@ -30,4 +30,7 @@ function mostrarSeccion(seccionId) {
     document.getElementById('semanales').style.display = 'none';
     document.getElementById('quincenales').style.display = 'none';
     document.getElementById('pedidos').style.display = 'none';
-    document.getElementById(se
+    document.getElementById(seccionId).style.display = 'block';
+}
+
+//
