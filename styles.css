@@ -29,22 +29,22 @@ button:hover {
     background-color: darkgreen;
 }
 
-.extra-content, .contact-form {
+.extra-content, .contact-form, .add-client {
     margin-top: 20px;
 }
 
-.contact-form h2 {
+.contact-form h2, .add-client h2 {
     color: darkgreen;
 }
 
-.contact-form label {
+.contact-form label, .add-client label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
 }
 
-.contact-form input {
-    width: 50%; /* Ajustado a 50% para hacer más estrechas las casillas */
+.contact-form input, .add-client input, .add-client select {
+    width: 50%; 
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -52,7 +52,7 @@ button:hover {
     box-sizing: border-box;
 }
 
-.contact-form button {
+.contact-form button, .add-client button {
     padding: 10px 20px;
     background-color: darkgreen;
     color: white;
@@ -61,38 +61,6 @@ button:hover {
     cursor: pointer;
 }
 
-.contact-form button:hover {
-    background-color: #006400;
-}
-
-.add-client {
-    margin-top: 20px;
-    text-align: left;
-}
-
-.add-client label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.add-client input, .add-client select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.add-client button {
-    padding: 10px 20px;
-    background-color: darkgreen;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.add-client button:hover {
+.contact-form button:hover, .add-client button:hover {
     background-color: #006400;
 }
