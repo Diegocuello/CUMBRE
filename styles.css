@@ -28,7 +28,6 @@ button {
 button:hover {
     background-color: darkgreen;
 }
-
 .extra-content, .contact-form, .add-client {
     margin-top: 20px;
 }
