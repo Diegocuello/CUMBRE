@@ -14,6 +14,79 @@
         <a href="#" class="home-link"><i class="icon-home"></i> Inicio</a>
         <button id="entrar">ENTRAR</button>
     </div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CUMBRE</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="presentation">
+        <h1>CUMBRE</h1>
+        <img src="logo.png" alt="Cumbre Logo">
+        <p class="tagline">Desde 1970 una sana costumbre.</p>
+        <a href="#" class="home-link"><i class="icon-home"></i> Inicio</a>
+        <button id="entrar">ENTRAR</button>
+        <button id="clientes">Gestión de Clientes</button> <!-- Nuevo botón para gestión de clientes -->
+    </div>
+        <div class="container" id="gestionClientes" style="display: none;">
+        <h1>Gestión de Clientes</h1>
+        <button id="botonSemanales">Clientes Semanales</button>
+        <button id="botonQuincenales">Clientes Quincenales</button>
+        <button id="botonPedidos">Registrar Pedidos</button>
+
+        <!-- Sección de Clientes Semanales -->
+        <div class="semanales" id="semanales" style="display: none;">
+            <h2>Clientes Semanales</h2>
+            <div id="listaClientesSemanales"></div>
+        </div>
+
+        <!-- Sección de Clientes Quincenales -->
+        <div class="quincenales" id="quincenales" style="display: none;">
+            <h2>Clientes Quincenales</h2>
+            <div id="listaClientesQuincenales"></div>
+        </div>
+
+        <!-- Formulario de Contacto -->
+        <div class="contact-form">
+            <h2>Contacto</h2>
+            <form id="contactForm">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+
+        <!-- Formulario para Agregar Clientes -->
+        <div class="add-client">
+            <h2>Agregar Cliente</h2>
+            <form id="addClientForm">
+                <label for="clientName">Nombre del Cliente:</label>
+                <input type="text" id="clientName" name="clientName" required>
+                <label for="clientDay">Día de la Semana:</label>
+                <select id="clientDay" name="clientDay">
+                    <option value="lunes">Lunes</option>
+                    <option value="martes">Martes</option>
+                    <option value="miércoles">Miércoles</option>
+                    <option value="jueves">Jueves</option>
+                    <option value="viernes">Viernes</option>
+                </select>
+                <label for="clientType">Tipo de Cliente:</label>
+                <select id="clientType" name="clientType">
+                    <option value="semanal">Semanal</option>
+                    <option value="quincenal">Quincenal</option>
+                </select>
+                <button type="submit">Agregar Cliente</button>
+            </form>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
 
     <div class="container" id="gestionClientes" style="display: none;">
         <h1>Gestión de Clientes</h1>
