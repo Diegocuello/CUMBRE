@@ -1,6 +1,6 @@
 // Datos iniciales
 let clientesSemanales = JSON.parse(localStorage.getItem('clientesSemanales')) || {};
-let clientesQuincenales = JSON.parse(localStorage.getItem('clientesQuincenales')) || {};
+let clientesQuincenales = JSON.parse(localStorageStorage.getItem('clientesQuincenales')) || {};
 let pedidos = JSON.parse(localStorage.getItem('pedidos')) || {};
 
 // Guardar datos en Local Storage
@@ -75,25 +75,18 @@ document.getElementById('addClientForm').addEventListener('submit', function(eve
 });
 
 // Función para guardar pedidos
-document.getElementById('guardarPedido').addEventListener('click', function() {
-    var pedidoTexto = document.getElementById('pedidoTexto').value;
-    const cantidad = document.getElementById('cantidad').value;
-    const total = document.getElementById('total').value;
-
-    if (!pedidoTexto || !cantidad || !total) {
-        alert('Por favor, complete todos los campos.');
+document.getElementById('addBlankPedido').addEventListener('click', function() {
+    const pedidoTexto = document.getElementById('pedidoTexto').value.trim();
+    if (pedidoTexto === "") {
+        alert('Por favor, escribe el pedido.');
         return;
     }
 
     const fechaActual = new Date().toISOString().split('T')[0];
     if (!pedidos[fechaActual]) pedidos[fechaActual] = [];
-    pedidos[fechaActual].push({ pedidoTexto, cantidad, total, enviado: false });
+    pedidos[fechaActual].push({ pedidoTexto, enviado: false });
     guardarDatos();
-
     document.getElementById('pedidoTexto').value = '';
-    document.getElementById('cantidad').value = '';
-    document.getElementById('total').value = '';
-    mostrarPedidos(fechaActual);
     alert('¡Pedido agregado!');
 });
 // Mostrar clientes
@@ -143,7 +136,7 @@ function mostrarHistorialPedidos(fecha) {
     if (pedidos[fecha]) {
         pedidos[fecha].forEach(pedido => {
             var pedidoElem = document.createElement('div');
-            pedidoElem.textContent = `${pedido.pedidoTexto} - Cantidad: ${pedido.cantidad} - Total: ${pedido.total}`;
+            pedidoElem.textContent = `${pedido.pedidoTexto}`;
             listaHistorialPedidos.appendChild(pedidoElem);
         });
     } else {
@@ -173,7 +166,7 @@ function tacharPedido(fecha, index) {
 document.getElementById('compartirWhatsApp').addEventListener('click', function() {
     const fechaActual = new Date().toISOString().split('T')[0];
     const pedidosParaEnviar = pedidos[fechaActual].filter(pedido => !pedido.enviado);
-    const textoPedidos = pedidosParaEnviar.map(pedido => `${pedido.pedidoTexto} - Cantidad: ${pedido.cantidad} - Total: ${pedido.total}`).join('\n');
+    const textoPedidos = pedidosParaEnviar.map(pedido => `${pedido.pedidoTexto}`).join('\n');
     const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(textoPedidos)}`;
     window.open(url, '_blank');
 });
