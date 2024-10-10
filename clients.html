@@ -12,12 +12,12 @@
         <button id="botonSemanales">Clientes Semanales</button>
         <button id="botonQuincenales">Clientes Quincenales</button>
         <button id="botonPedidos">Registrar Pedidos</button>
+
         <!-- Sección de Clientes Semanales -->
         <div class="semanales" id="semanales" style="display: none;">
             <h2>Clientes Semanales</h2>
             <div id="listaClientesSemanales"></div>
         </div>
-
         <!-- Sección de Clientes Quincenales -->
         <div class="quincenales" id="quincenales" style="display: none;">
             <h2>Clientes Quincenales</h2>
@@ -35,7 +35,6 @@
                 <button type="submit">Enviar</button>
             </form>
         </div>
-
         <!-- Formulario para Agregar Clientes -->
         <div class="add-client">
             <h2>Agregar Cliente</h2>
@@ -56,6 +55,15 @@
                     <option value="quincenal">Quincenal</option>
                 </select>
                 <button type="submit">Agregar Cliente</button>
+            </form>
+        </div>
+
+        <!-- Formulario para Subir Fotos -->
+        <div class="upload-photo">
+            <h2>Subir Foto</h2>
+            <form id="uploadPhotoForm">
+                <input type="file" id="clientPhoto" name="clientPhoto" accept="image/*" required>
+                <button type="submit">Subir Foto</button>
             </form>
         </div>
     </div>
