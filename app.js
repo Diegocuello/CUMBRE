@@ -32,7 +32,6 @@ function mostrarSeccion(seccionId) {
     document.getElementById('pedidos').style.display = 'none';
     document.getElementById(seccionId).style.display = 'block';
 }
-
 // Agregar clientes
 document.getElementById('addClientForm').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -77,4 +76,36 @@ function mostrarClientes() {
     Object.keys(clientesSemanales).forEach(dia => {
         clientesSemanales[dia].forEach(cliente => {
             var clienteElem = document.createElement('div');
-            clienteElem.innerHTML = `[43dcd9a7-70db-4a1f-b0ae-981daa162054](https://github.com/la9una/web/tree/ba1073ae044ebb7b538a3b13f0f9598f7c410bb6/docs%2Fbootstrap%2Falignci.md?citationMarker=43dcd9a7-70db-4a1f-b0ae-981daa162054 "1")[43dcd9a7-70db-4a1f-b0ae-981daa162054](https://github.com/CLONATORE/markdowns/tree/82cfb03683ceb807a7091de48045e6a7485acd72/webpack.md?citationMarker=43dcd9a7-70db-4a1f-b0ae-981daa162054 "2")[43dcd9a7-70db-4a1f-b0ae-981daa162054](https://github.com/AlexLeonCord/esspia/tree/cd1617355861bfadb2ca7da805b9443c3dc57512/public%2Fclient.js?citationMarker=43dcd9a7-70db-4a1f-b0ae-981daa162054 "3")[43dcd9a7-70db-4a1f-b0ae-981daa162054](https://github.com/sgaribotto/programas/tree/5a88e9de5e66bf9f2494510298dfd9c088cfe96b/imprimirCarteles.php?citationMarker=43dcd9a7-70db-4a1f-b0ae-981daa162054 "4")
+            clienteElem.innerHTML = `
+                <input type="checkbox" id="${cliente.nombre}" ${cliente.visitado ? 'checked' : ''}>
+                <label for="${cliente.nombre}">${cliente.nombre}</label>
+            `;
+            listaClientesSemanales.appendChild(clienteElem);
+        });
+    });
+
+    // Mostrar clientes quincenales
+    Object.keys(clientesQuincenales).forEach(dia => {
+        clientesQuincenales[dia].forEach(cliente => {
+            var clienteElem = document.createElement('div');
+            clienteElem.innerHTML = `
+                <input type="checkbox" id="${cliente.nombre}" ${cliente.visitado ? 'checked' : ''}>
+                <label for="${cliente.nombre}">${cliente.nombre}</label>
+            `;
+            listaClientesQuincenales.appendChild(clienteElem);
+        });
+    });
+}
+mostrarClientes();
+
+// Resetear visitas semanalmente
+function resetearVisitas() {
+    const diaActual = new Date().getDay();
+    if (diaActual === 0) {
+        Object.keys(clientesSemanales).forEach(dia => {
+            clientesSemanales[dia].forEach(cliente => cliente.visitado = false);
+        });
+        guardarDatos();
+    }
+}
+resetearVisitas();
