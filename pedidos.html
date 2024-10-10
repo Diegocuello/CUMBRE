@@ -1,1 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Pedidos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Registrar Pedidos</h1>
+        <button id="historial">Ver Historial</button>
+        <div class="add-pedido">
+            <h2>Agregar Pedido</h2>
+            <form id="addPedidoForm">
+                <label for="pedidoTexto">Pedido:</label>
+                <input type="text" id="pedidoTexto" name="pedidoTexto" required>
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" id="cantidad" name="cantidad" required>
+                <label for="total">Total:</label>
+                <input type="number" id="total" name="total" required>
+                <button type="submit">Agregar Pedido</button>
+            </form>
+        </div>
+        <!-- Subir Foto de la Lista de Precios -->
+        <div class="upload-photo">
+            <h2>Subir Foto de la Lista de Precios</h2>
+            <form id="uploadPhotoForm">
+                <input type="file" id="pedidoPhoto" name="pedidoPhoto" accept="image/*" required>
+                <button type="submit">Subir Foto</button>
+            </form>
+        </div>
 
+        <!-- Historial de Pedidos -->
+        <div class="historial-pedidos" id="historialPedidos" style="display: none;">
+            <h2>Historial de Pedidos</h2>
+            <input type="date" id="buscarFecha">
+            <button id="buscarPedido">Buscar</button>
+            <div id="listaHistorialPedidos"></div>
+        </div>
+        <!-- Botón para Compartir en WhatsApp -->
+        <button id="compartirWhatsApp">Compartir en WhatsApp</button>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
