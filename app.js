@@ -10,26 +10,45 @@ function guardarDatos() {
     localStorage.setItem('pedidos', JSON.stringify(pedidos));
 }
 
-// Mostrar y ocultar secciones
-document.getElementById('entrar').addEventListener('click', function() {
-    window.location.href = 'clients.html'; // Redirigir a la nueva pantalla
+// Manejar la subida de fotos
+document.getElementById('uploadPhotoForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const photoInput = document.getElementById('pedidoPhoto');
+    const photoFile = photoInput.files[0];
+
+    if (!photoFile) {
+        alert('Por favor, sube una foto.');
+        return;
+    }
+
+    // Aquí llamaríamos a una API de OCR para procesar la foto
+    // Ejemplo usando una API de OCR ficticia
+    const formData = new FormData();
+    formData.append('image', photoFile);
+
+    fetch('https://api.ocr.example.com/extract', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        const codigosArticulos = data.text;
+        procesarCodigosArticulos(codigosArticulos);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Error al procesar la foto.');
+    });
 });
 
-document.getElementById('botonSemanales').addEventListener('click', function() {
-    mostrarSeccion('semanales');
-});
-document.getElementById('botonQuincenales').addEventListener('click', function() {
-    mostrarSeccion('quincenales');
-});
-document.getElementById('botonPedidos').addEventListener('click', function() {
-    mostrarSeccion('pedidos');
-});
-
-function mostrarSeccion(seccionId) {
-    document.getElementById('semanales').style.display = 'none';
-    document.getElementById('quincenales').style.display = 'none';
-    document.getElementById('pedidos').style.display = 'none';
-    document.getElementById(seccionId).style.display = 'block';
+function procesarCodigosArticulos(texto) {
+    // Aquí procesaríamos el texto extraído de la foto
+    // Ejemplo básico para dividir por líneas y mostrar los códigos y artículos
+    const lineas = texto.split('\n');
+    lineas.forEach(linea => {
+        console.log('Código/Artículo:', linea);
+        // Aquí puedes agregar lógica para guardar los códigos y artículos en el sistema
+    });
 }
 // Agregar clientes
 document.getElementById('addClientForm').addEventListener('submit', function(event) {
@@ -37,6 +56,11 @@ document.getElementById('addClientForm').addEventListener('submit', function(eve
     const nombre = document.getElementById('clientName').value;
     const dia = document.getElementById('clientDay').value;
     const tipo = document.getElementById('clientType').value;
+
+    if (!nombre || !dia || !tipo) {
+        alert('Por favor, complete todos los campos.');
+        return;
+    }
 
     if (tipo === 'semanal') {
         if (!clientesSemanales[dia]) clientesSemanales[dia] = [];
@@ -53,17 +77,25 @@ document.getElementById('addClientForm').addEventListener('submit', function(eve
 // Función para guardar pedidos
 document.getElementById('guardarPedido').addEventListener('click', function() {
     var pedidoTexto = document.getElementById('pedidoTexto').value;
-    if (pedidoTexto) {
-        var listaPedidos = document.getElementById('listaPedidos');
-        var nuevoPedido = document.createElement('div');
-        nuevoPedido.textContent = pedidoTexto;
-        listaPedidos.appendChild(nuevoPedido);
-        guardarDatos();
+    const cantidad = document.getElementById('cantidad').value;
+    const total = document.getElementById('total').value;
 
-        document.getElementById('pedidoTexto').value = '';
+    if (!pedidoTexto || !cantidad || !total) {
+        alert('Por favor, complete todos los campos.');
+        return;
     }
-});
 
+    const fechaActual = new Date().toISOString().split('T')[0];
+    if (!pedidos[fechaActual]) pedidos[fechaActual] = [];
+    pedidos[fechaActual].push({ pedidoTexto, cantidad, total, enviado: false });
+    guardarDatos();
+
+    document.getElementById('pedidoTexto').value = '';
+    document.getElementById('cantidad').value = '';
+    document.getElementById('total').value = '';
+    mostrarPedidos(fechaActual);
+    alert('¡Pedido agregado!');
+});
 // Mostrar clientes
 function mostrarClientes() {
     var listaClientesSemanales = document.getElementById('listaClientesSemanales');
@@ -97,10 +129,31 @@ function mostrarClientes() {
 }
 mostrarClientes();
 
+// Buscar pedidos por fecha
+document.getElementById('buscarPedido').addEventListener('click', function() {
+    var fecha = document.getElementById('buscarFecha').value;
+    if (fecha) {
+        mostrarHistorialPedidos(fecha);
+    }
+});
+
+function mostrarHistorialPedidos(fecha) {
+    var listaHistorialPedidos = document.getElementById('listaHistorialPedidos');
+    listaHistorialPedidos.innerHTML = '';
+    if (pedidos[fecha]) {
+        pedidos[fecha].forEach(pedido => {
+            var pedidoElem = document.createElement('div');
+            pedidoElem.textContent = `${pedido.pedidoTexto} - Cantidad: ${pedido.cantidad} - Total: ${pedido.total}`;
+            listaHistorialPedidos.appendChild(pedidoElem);
+        });
+    } else {
+        listaHistorialPedidos.innerHTML = '<p>No hay pedidos para esta fecha.</p>';
+    }
+}
 // Resetear visitas semanalmente
 function resetearVisitas() {
     const diaActual = new Date().getDay();
-    if (diaActual === 0) {
+    if (diaActual === 0) { // 0 representa el domingo
         Object.keys(clientesSemanales).forEach(dia => {
             clientesSemanales[dia].forEach(cliente => cliente.visitado = false);
         });
@@ -108,3 +161,19 @@ function resetearVisitas() {
     }
 }
 resetearVisitas();
+
+// Función para tachar pedidos
+function tacharPedido(fecha, index) {
+    pedidos[fecha][index].enviado = !pedidos[fecha][index].enviado;
+    guardarDatos();
+    mostrarPedidos(fecha);
+}
+
+// Función para compartir en WhatsApp
+document.getElementById('compartirWhatsApp').addEventListener('click', function() {
+    const fechaActual = new Date().toISOString().split('T')[0];
+    const pedidosParaEnviar = pedidos[fechaActual].filter(pedido => !pedido.enviado);
+    const textoPedidos = pedidosParaEnviar.map(pedido => `${pedido.pedidoTexto} - Cantidad: ${pedido.cantidad} - Total: ${pedido.total}`).join('\n');
+    const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(textoPedidos)}`;
+    window.open(url, '_blank');
+});
