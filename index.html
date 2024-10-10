@@ -33,12 +33,16 @@
             <div id="listaClientesQuincenales"></div>
         </div>
 
-        <!-- Registro de Pedidos -->
-        <div class="pedidos" id="pedidos" style="display: none;">
-            <h2>Registrar Pedidos</h2>
-            <textarea id="pedidoTexto" placeholder="Escribe el pedido aquí..."></textarea>
-            <button id="guardarPedido">Guardar Pedido</button>
-            <div id="listaPedidos"></div>
+        <!-- Formulario de Contacto -->
+        <div class="contact-form">
+            <h2>Contacto</h2>
+            <form id="contactForm">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <button type="submit">Enviar</button>
+            </form>
         </div>
 
         <!-- Formulario para Agregar Clientes -->
@@ -46,4 +50,5 @@
             <h2>Agregar Cliente</h2>
             <form id="addClientForm">
                 <label for="clientName">Nombre del Cliente:</label>
-                <input type="text
+                <input type="text" id="clientName" name="clientName" required>
+                <label for="client
