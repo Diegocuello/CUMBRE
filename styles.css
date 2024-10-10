@@ -43,7 +43,7 @@ button:hover {
 }
 
 .contact-form input, .add-client input, .add-client select {
-    width: 100%;
+    width: 80%; /* Ajustamos el ancho */
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -51,17 +51,25 @@ button:hover {
     box-sizing: border-box;
 }
 
-.contact-form button, .add-client button {
-    padding: 10px 20px;
-    background-color: darkgreen;
+input[type="file"] {
+    margin: 10px 0;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin-top: 10px;
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 18px;
 }
 
-.contact-form button:hover, .add-client button:hover {
-    background-color: #006400;
+button:hover {
+    background-color: #0056b3;
 }
 /* Mejoras visuales adicionales */
 .container {
@@ -77,8 +85,8 @@ h1, h2 {
     font-family: 'Arial Black', sans-serif;
 }
 
-input[type="text"], input[type="email"], select {
-    width: 100%;
+textarea {
+    width: 80%; /* Ajustamos el ancho */
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ccc;
