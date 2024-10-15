@@ -1,6 +1,6 @@
 // Datos iniciales
 let clientesSemanales = JSON.parse(localStorage.getItem('clientesSemanales')) || {};
-let clientesQuincenales = JSON.parse(localStorageStorage.getItem('clientesQuincenales')) || {};
+let clientesQuincenales = JSON.parse(localStorage.getItem('clientesQuincenales')) || {};
 let pedidos = JSON.parse(localStorage.getItem('pedidos')) || {};
 
 // Guardar datos en Local Storage
@@ -50,6 +50,7 @@ function procesarCodigosArticulos(texto) {
         // Aquí puedes agregar lógica para guardar los códigos y artículos en el sistema
     });
 }
+
 // Agregar clientes
 document.getElementById('addClientForm').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -89,6 +90,7 @@ document.getElementById('addBlankPedido').addEventListener('click', function() {
     document.getElementById('pedidoTexto').value = '';
     alert('¡Pedido agregado!');
 });
+
 // Mostrar clientes
 function mostrarClientes() {
     var listaClientesSemanales = document.getElementById('listaClientesSemanales');
@@ -120,53 +122,3 @@ function mostrarClientes() {
         });
     });
 }
-mostrarClientes();
-
-// Buscar pedidos por fecha
-document.getElementById('buscarPedido').addEventListener('click', function() {
-    var fecha = document.getElementById('buscarFecha').value;
-    if (fecha) {
-        mostrarHistorialPedidos(fecha);
-    }
-});
-
-function mostrarHistorialPedidos(fecha) {
-    var listaHistorialPedidos = document.getElementById('listaHistorialPedidos');
-    listaHistorialPedidos.innerHTML = '';
-    if (pedidos[fecha]) {
-        pedidos[fecha].forEach(pedido => {
-            var pedidoElem = document.createElement('div');
-            pedidoElem.textContent = `${pedido.pedidoTexto}`;
-            listaHistorialPedidos.appendChild(pedidoElem);
-        });
-    } else {
-        listaHistorialPedidos.innerHTML = '<p>No hay pedidos para esta fecha.</p>';
-    }
-}
-// Resetear visitas semanalmente
-function resetearVisitas() {
-    const diaActual = new Date().getDay();
-    if (diaActual === 0) { // 0 representa el domingo
-        Object.keys(clientesSemanales).forEach(dia => {
-            clientesSemanales[dia].forEach(cliente => cliente.visitado = false);
-        });
-        guardarDatos();
-    }
-}
-resetearVisitas();
-
-// Función para tachar pedidos
-function tacharPedido(fecha, index) {
-    pedidos[fecha][index].enviado = !pedidos[fecha][index].enviado;
-    guardarDatos();
-    mostrarPedidos(fecha);
-}
-
-// Función para compartir en WhatsApp
-document.getElementById('compartirWhatsApp').addEventListener('click', function() {
-    const fechaActual = new Date().toISOString().split('T')[0];
-    const pedidosParaEnviar = pedidos[fechaActual].filter(pedido => !pedido.enviado);
-    const textoPedidos = pedidosParaEnviar.map(pedido => `${pedido.pedidoTexto}`).join('\n');
-    const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(textoPedidos)}`;
-    window.open(url, '_blank');
-});
